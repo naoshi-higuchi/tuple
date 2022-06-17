@@ -41,7 +41,7 @@ public final class Triple<E1, E2, E3> {
 
 		Triple rhs = (Triple) obj;
 
-		return Objects.equals(fElem1, fElem2)
+		return Objects.equals(fElem1, rhs.fElem1)
 				&& Objects.equals(fElem2, rhs.fElem2)
 				&& Objects.equals(fElem3, rhs.fElem3);
 	}
