@@ -17,8 +17,8 @@ public final class Triple<E1, E2, E3> {
 		fElem3 = elem3;
 	}
 
-	public static <E1, E2, E3> Triple newTriple(E1 elem1, E2 elem2, E3 elem3) {
-		return new Triple(elem1, elem2, elem3);
+	public static <E1, E2, E3> Triple<E1, E2, E3> newTriple(E1 elem1, E2 elem2, E3 elem3) {
+		return new Triple<>(elem1, elem2, elem3);
 	}
 
 	public E1 get1st() {
@@ -35,11 +35,8 @@ public final class Triple<E1, E2, E3> {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj == null) return false;
 		if (obj == this) return true;
-		if (!(obj instanceof Triple)) return false;
-
-		Triple rhs = (Triple) obj;
+		if (!(obj instanceof Triple<?, ?, ?> rhs)) return false;
 
 		return Objects.equals(fElem1, rhs.fElem1)
 				&& Objects.equals(fElem2, rhs.fElem2)
@@ -48,9 +45,7 @@ public final class Triple<E1, E2, E3> {
 
 	@Override
 	public int hashCode() {
-		return Objects.hashCode(fElem1)
-				+ Objects.hashCode(fElem2)
-				+ Objects.hashCode(fElem3);
+		return Objects.hash(fElem1, fElem2, fElem3);
 	}
 
 	@Override
