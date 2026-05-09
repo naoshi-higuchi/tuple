@@ -81,4 +81,20 @@ class PairTest {
         assertNull(p.get2nd());
         assertEquals(p, Pair.newPair(null, null));
     }
+
+    @Test
+    void equalsTransitive() {
+        var p1 = Pair.newPair("x", 42);
+        var p2 = Pair.newPair("x", 42);
+        var p3 = Pair.newPair("x", 42);
+        assertEquals(p1, p2);
+        assertEquals(p2, p3);
+        assertEquals(p1, p3);
+    }
+
+    @Test
+    void notEqualsMixedNull() {
+        assertNotEquals(Pair.newPair(null, 1), Pair.newPair("a", 1));
+        assertNotEquals(Pair.newPair("a", null), Pair.newPair("a", 1));
+    }
 }

@@ -93,4 +93,21 @@ class TripleTest {
         assertNull(t.get3rd());
         assertEquals(t, Triple.newTriple(null, null, null));
     }
+
+    @Test
+    void equalsTransitive() {
+        var t1 = Triple.newTriple("x", 42, 3.14);
+        var t2 = Triple.newTriple("x", 42, 3.14);
+        var t3 = Triple.newTriple("x", 42, 3.14);
+        assertEquals(t1, t2);
+        assertEquals(t2, t3);
+        assertEquals(t1, t3);
+    }
+
+    @Test
+    void notEqualsMixedNull() {
+        assertNotEquals(Triple.newTriple(null, 1, 2), Triple.newTriple("a", 1, 2));
+        assertNotEquals(Triple.newTriple("a", null, 2), Triple.newTriple("a", 1, 2));
+        assertNotEquals(Triple.newTriple("a", 1, null), Triple.newTriple("a", 1, 2));
+    }
 }
