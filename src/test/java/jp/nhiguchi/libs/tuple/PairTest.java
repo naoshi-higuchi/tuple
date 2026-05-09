@@ -60,8 +60,18 @@ class PairTest {
     }
 
     @Test
+    void hashCodeDiffersForUnequalPairs() {
+        assertNotEquals(Pair.newPair("a", 1).hashCode(), Pair.newPair("b", 1).hashCode());
+    }
+
+    @Test
     void toStringFormat() {
         assertEquals("<hello, 7>", Pair.newPair("hello", 7).toString());
+    }
+
+    @Test
+    void toStringWithNulls() {
+        assertEquals("<null, null>", Pair.newPair(null, null).toString());
     }
 
     @Test

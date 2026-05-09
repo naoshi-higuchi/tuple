@@ -71,8 +71,18 @@ class TripleTest {
     }
 
     @Test
+    void hashCodeDiffersForUnequalTriples() {
+        assertNotEquals(Triple.newTriple("a", 1, 2).hashCode(), Triple.newTriple("b", 1, 2).hashCode());
+    }
+
+    @Test
     void toStringFormat() {
         assertEquals("<a, 1, true>", Triple.newTriple("a", 1, true).toString());
+    }
+
+    @Test
+    void toStringWithNulls() {
+        assertEquals("<null, null, null>", Triple.newTriple(null, null, null).toString());
     }
 
     @Test
